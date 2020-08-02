@@ -1,5 +1,5 @@
 suricataparser |build-status| |license| |py-versions| |pypi-version|
-===========================================================
+======================================================================
 Pure python parser for Snort/Suricata rules.
 
 Install
