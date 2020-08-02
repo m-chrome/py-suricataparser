@@ -1,0 +1,2 @@
+class RuleParseException(Exception):
+    pass
