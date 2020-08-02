@@ -68,6 +68,6 @@ Modify options:
 .. |pypi-version| image:: https://badge.fury.io/py/suricataparser.svg
    :target: https://pypi.org/project/suricataparser
 .. |license| image:: https://img.shields.io/pypi/l/suricataparser.svg
-   :target: https://pypi.org/project/suricataparser
+   :target: https://github.com/m-chrome/py-suricataparser/blob/master/LICENSE
 .. |py-versions| image:: https://img.shields.io/pypi/pyversions/suricataparser.svg
    :target: https://pypi.org/project/suricataparser
