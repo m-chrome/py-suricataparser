@@ -1,5 +1,5 @@
-suricataparser |build-status|
-====================================
+suricataparser |build-status| |license| |py-versions| |pypi-version|
+===========================================================
 Pure python parser for Snort/Suricata rules.
 
 Install
@@ -65,3 +65,9 @@ Modify options:
 
 .. |build-status| image:: https://travis-ci.org/m-chrome/py-suricataparser.png?branch=master
    :target: https://travis-ci.org/m-chrome/py-suricataparser
+.. |pypi-version| image:: https://badge.fury.io/py/suricataparser.svg
+   :target: https://pypi.org/project/suricataparser
+.. |license| image:: https://img.shields.io/pypi/l/suricataparser.svg
+   :target: https://pypi.org/project/suricataparser
+.. |py-versions| image:: https://img.shields.io/pypi/pyversions/suricataparser.svg
+   :target: https://pypi.org/project/suricataparser
