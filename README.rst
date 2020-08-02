@@ -6,7 +6,7 @@ Install
 ---------
 Requires Python >= 3.6.
 
-pip install suricataparser``
+    pip install suricataparser
 
 Usage
 ---------
