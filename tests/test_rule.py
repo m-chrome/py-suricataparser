@@ -68,3 +68,12 @@ def test_pop_meta():
     metas = metadata.pop_meta("key1")
     assert metadata.data == ["key value"]
     assert metas == ["key1 value"]
+
+
+def test_change_classtype():
+    rule = parse_rule('alert tcp any any -> any any (msg: "Message"; classtype: trojan-activity; '
+                      'metadata: k v;)')
+    assert rule.classtype == 'trojan-activity'
+    rule.pop_option("classtype")
+    rule.add_option("classtype", "backdoor")
+    assert rule.classtype == "backdoor"
