@@ -16,7 +16,7 @@ class Option:
     def __str__(self):
         if not self.value:
             return "{name};".format(name=self.name)
-        return "{name}: {value};".format(name=self.name, value=self.value)
+        return "{name}:{value};".format(name=self.name, value=self.value)
 
 
 class Metadata:

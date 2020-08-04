@@ -72,8 +72,8 @@ def test_parse_something():
 
 
 def test_parse_rule_with_two_metadata():
-    rule = parse_rule('alert tcp any any -> any any (msg:"Message"; metadata: former_category TROJAN; '
-                      'sid:1; rev:1; metadata: malware_family Crypton, malware_family Nemesis;)')
+    rule = parse_rule('alert tcp any any -> any any (msg:"Message"; metadata:former_category TROJAN; '
+                      'sid:1; rev:1; metadata:malware_family Crypton, malware_family Nemesis;)')
     metadata_opts = [opt for opt in rule.options if opt.name == "metadata"]
     assert len(metadata_opts) == 2
 
