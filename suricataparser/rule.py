@@ -141,3 +141,16 @@ class Rule:
         self._options = options
         self.build_rule()
         return chosen_options
+
+    def to_dict(self):
+        options = []
+        for option in self.options:
+            if option.name != Option.METADATA:
+                options.append({"name": option.name, "value": option.value})
+            else:
+                options.append({"name": option.name, "value": option.value.data})
+
+        return {
+            "enabled": self.enabled, "action": self.action,
+            "header": self.header, "options": options
+        }

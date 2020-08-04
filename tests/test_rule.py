@@ -77,3 +77,18 @@ def test_change_classtype():
     rule.pop_option("classtype")
     rule.add_option("classtype", "backdoor")
     assert rule.classtype == "backdoor"
+
+
+def test_rule_data_repr():
+    rule = parse_rule('alert tcp any any -> any any (msg:"Message"; classtype:trojan-activity; '
+                      'metadata:k v;)')
+    assert rule.to_dict() == {
+        "enabled": True,
+        "action": "alert",
+        "header": "tcp any any -> any any",
+        "options": [
+            {"name": "msg", "value": '"Message"'},
+            {"name": "classtype", "value": "trojan-activity"},
+            {"name": "metadata", "value": ["k v"]}
+        ]
+    }
