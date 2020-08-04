@@ -55,11 +55,12 @@ class Rule:
         self._classtype = None
         self._metadata = []
         self._raw = raw
-        self.build_options()
+        if raw:
+            self.build_options()
+        else:
+            self.build_rule()
 
     def __str__(self):
-        if not self._raw:
-            self.build_rule()
         return "{enabled}{rule}".format(enabled="" if self.enabled else "# ",
                                         rule=self.raw)
 
