@@ -104,7 +104,7 @@ class Rule:
         self._metadata = []
         for option in self._options:
             if option.name == Option.MSG:
-                self._msg = option.value
+                self._msg = option.value.strip('"')
             elif option.name == Option.SID:
                 self._sid = int(option.value)
             elif option.name == Option.GID:

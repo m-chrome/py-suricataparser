@@ -22,7 +22,7 @@ def test_parse_rule():
     assert parsed_rule.header == "tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS"
     assert parsed_rule.sid == 2014929
     assert parsed_rule.rev == 1
-    assert parsed_rule.msg == '"ET CURRENT_EVENTS Request to .in FakeAV Campaign June 19 2012 exe or zip"'
+    assert parsed_rule.msg == 'ET CURRENT_EVENTS Request to .in FakeAV Campaign June 19 2012 exe or zip'
     assert len(parsed_rule.options) == 16
 
 
@@ -81,12 +81,12 @@ def test_parse_rule_with_two_metadata():
 def test_parse_rule_with_colon_in_options():
     rule = parse_rule('alert tcp any any -> any any (msg:"Message: text";)')
     assert rule
-    assert rule.msg == '"Message: text"'
+    assert rule.msg == 'Message: text'
 
 
 def test_parse_rule_with_semicolon_in_msg():
     rule = parse_rule('alert tcp any any -> any any (msg:"Message\\;text";)')
-    assert rule.msg == '"Message\\;text"'
+    assert rule.msg == 'Message\\;text'
 
 
 def test_parse_file():
