@@ -119,3 +119,10 @@ def test_parse_multiline_rule():
 def test_parse_rule_with_empty_metadata():
     with pytest.raises(RuleParseException):
         parse_rule('alert tcp any any -> any any (sid:1; metadata;)')
+
+
+def test_parse_rule_like_string():
+    assert parse_rule("# I am Senate (c)") is None
+    assert parse_rule(" I am Senate (c)") is None
+    assert parse_rule("You (Senate)") is None
+    assert parse_rule("#()") is None

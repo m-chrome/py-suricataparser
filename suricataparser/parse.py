@@ -60,8 +60,15 @@ def parse_rule(buffer):
     else:
         enabled = True
 
-    header = m.group("header").strip()
-    action, header = header.split(" ", maxsplit=1)
+    header = m.group("header")
+    if not header:
+        return
+
+    header_parts = header.strip().split(" ", maxsplit=1)
+    if len(header_parts) != 2:
+        return
+
+    action, header = header_parts
     if action not in ("alert", "drop", "pass", "reject"):
         return
 
