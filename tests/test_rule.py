@@ -92,3 +92,10 @@ def test_rule_data_repr():
             {"name": "metadata", "value": ["k v"]}
         ]
     }
+
+
+def test_get_option():
+    rule = parse_rule('alert tcp any any -> any any (msg:"Message"; classtype:trojan-activity; '
+                      'metadata:k v;)')
+    options = rule.get_option("msg")
+    assert options == [Option("msg", '"Message"')]

@@ -142,6 +142,9 @@ class Rule:
         self.build_rule()
         return chosen_options
 
+    def get_option(self, name):
+        return [option for option in self.options if option.name == name]
+
     def to_dict(self):
         options = []
         for option in self.options:
