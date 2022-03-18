@@ -1,4 +1,4 @@
-from suricataparser.parse import parse_rule, parse_file, parse_file_object
+from suricataparser.parse import parse_rule, parse_file, parse_rules
 from suricataparser.rule import Rule
 
 
