@@ -12,17 +12,17 @@ Usage
 ---------
 ::
 
-    >>> from suricataparser import parse_rule, parse_file, parse_file_object
+    >>> from suricataparser import parse_rule, parse_file, parse_rules
 
 Parse rules file:
 ::
 
     >>> rules = parse_file("suricata.rules")
 
-Parse rules file object (for embedding into scripts):
+Parse rules object (for embedding into scripts):
 ::
 
-    >>> rules = parse_file_object(file_object)
+    >>> rules = parse_rules(rules_object)
 
 Parse raw rule:
 ::
