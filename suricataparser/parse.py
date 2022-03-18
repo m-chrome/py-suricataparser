@@ -92,10 +92,10 @@ def parse_file(path):
             buffer = ""
     return rules
 
-def parse_file_object(file_object):
+def parse_rules(rules_object):
     rules = []
     buffer = ""
-    for line in file_object.splitlines():
+    for line in rules_object.splitlines():
         if line.rstrip().endswith("\\"):
             buffer += line.strip()[:-1]
             continue
