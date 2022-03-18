@@ -92,6 +92,7 @@ def parse_file(path):
             buffer = ""
     return rules
 
+
 def parse_rules(rules_object):
     rules = []
     buffer = ""
