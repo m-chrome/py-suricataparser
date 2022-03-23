@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "suricataparser"
+version = "0.0.8"
+description = "Package for parsing and generating Snort/Suricata rules."
+authors = ["Mikhail Tsyganov <tsyganov.michail@yandex.ru>"]
+license = "Apache-2.0"
+readme = "README.rst"
+keywords = ["suricata", "snort", "rules"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+pytest = ">=5"
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
