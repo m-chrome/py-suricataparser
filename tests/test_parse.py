@@ -3,7 +3,7 @@ import tempfile
 
 import pytest
 
-from suricataparser import parse_rule, parse_file
+from suricataparser import parse_rule, parse_file, parse_rules
 from suricataparser.exceptions import RuleParseException
 
 
@@ -94,6 +94,21 @@ def test_parse_file():
         rules_file.write("{rule}\n".format(rule='alert tcp any any -> any any (sid:1;)').encode())
         rules_path = rules_file.name
     rules = parse_file(rules_path)
+    assert len(rules) == 1
+    rule = rules[0]
+    assert rule.enabled is True
+    assert rule.action == "alert"
+    assert rule.sid == 1
+    os.remove(rules_path)
+
+
+def test_parse_rules():
+    with tempfile.NamedTemporaryFile(delete=False) as rules_file:
+        rules_file.write('alert tcp any any -> any any (sid:1;)\n'.encode())
+        rules_path = rules_file.name
+    with open(rules_path, 'r') as file:
+      rules_object = file.read()
+    rules = parse_rules(rules_object)
     assert len(rules) == 1
     rule = rules[0]
     assert rule.enabled is True

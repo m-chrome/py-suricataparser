@@ -91,3 +91,17 @@ def parse_file(path):
                 rules.append(rule)
             buffer = ""
     return rules
+
+
+def parse_rules(rules_object):
+    rules = []
+    buffer = ""
+    for line in rules_object.splitlines():
+        if line.rstrip().endswith("\\"):
+            buffer += line.strip()[:-1]
+            continue
+        rule = parse_rule(buffer + line)
+        if rule:
+            rules.append(rule)
+        buffer = ""
+    return rules
