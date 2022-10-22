@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "suricataparser"
-version = "0.0.8"
+version = "1.0.0"
 description = "Package for parsing and generating Snort/Suricata rules."
 authors = ["Mikhail Tsyganov <tsyganov.michail@yandex.ru>"]
 license = "Apache-2.0"
