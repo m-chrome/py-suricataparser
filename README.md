@@ -3,6 +3,7 @@
 [![pypi-version](https://badge.fury.io/py/suricataparser.svg)](https://pypi.org/project/suricataparser)
 [![py-versions](https://img.shields.io/pypi/pyversions/suricataparser.svg)](https://pypi.org/project/suricataparser)
 [![license](https://img.shields.io/pypi/l/suricataparser.svg)](https://github.com/m-chrome/py-suricataparser/blob/master/LICENSE)
+[![CI](https://github.com/m-chrome/py-suricataparser/actions/workflows/tests.yml/badge.svg)](https://github.com/m-chrome/py-suricataparser/actions)
 
 Pure python package for parsing and generating Snort/Suricata rules.
 
