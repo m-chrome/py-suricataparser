@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class Option:
     CLASSTYPE = "classtype"
     GID = "gid"
@@ -6,31 +9,31 @@ class Option:
     REV = "rev"
     SID = "sid"
 
-    def __init__(self, name, value=None):
-        self.name = name
-        self.value = value
+    def __init__(self, name: str, value: Optional[str, 'Metadata'] = None):
+        self.name: str = name
+        self.value: Optional[str, 'Metadata'] = value
 
-    def __eq__(self, other):
+    def __eq__(self, other: 'Option') -> bool:
         return self.name == other.name and self.value == other.value
 
-    def __str__(self):
+    def __str__(self) -> str:
         if not self.value:
             return "{name};".format(name=self.name)
         return "{name}:{value};".format(name=self.name, value=self.value)
 
 
 class Metadata:
-    def __init__(self, data):
+    def __init__(self, data: list):
         self.data = data
 
-    def __str__(self):
+    def __str__(self) -> str:
         return ", ".join(self.data)
 
-    def add_meta(self, name, value):
+    def add_meta(self, name: str, value: str) -> list:
         self.data.append("{name} {value}".format(name=name, value=value))
         return self.data
 
-    def pop_meta(self, name):
+    def pop_meta(self, name: str) -> list:
         meta_items = []
         metadata = []
         for meta in self.data:
@@ -43,7 +46,8 @@ class Metadata:
 
 
 class Rule:
-    def __init__(self, enabled, action, header, options, raw=None):
+    def __init__(self, enabled: bool, action: str, header: str,
+                 options: list[Option], raw: Optional[str] = None):
         self.enabled = enabled
         self._action = action
         self._header = header
@@ -60,44 +64,44 @@ class Rule:
         else:
             self.build_rule()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "{enabled}{rule}".format(enabled="" if self.enabled else "# ",
                                         rule=self.raw)
 
     @property
-    def action(self):
+    def action(self) -> str:
         return self._action
 
     @property
-    def classtype(self):
+    def classtype(self) -> str:
         return self._classtype
 
     @property
-    def header(self):
+    def header(self) -> str:
         return self._header
 
     @property
-    def metadata(self):
+    def metadata(self) -> list:
         return self._metadata
 
     @property
-    def msg(self):
+    def msg(self) -> str:
         return self._msg
 
     @property
-    def options(self):
+    def options(self) -> list[Option]:
         return self._options
 
     @property
-    def raw(self):
+    def raw(self) -> str:
         return self._raw
 
     @property
-    def rev(self):
+    def rev(self) -> Optional[int]:
         return self._rev
 
     @property
-    def sid(self):
+    def sid(self) -> Optional[int]:
         return self._sid
 
     def build_options(self):
@@ -116,13 +120,13 @@ class Rule:
             elif option.name == Option.METADATA:
                 self._metadata.extend(option.value.data)
 
-    def build_rule(self):
+    def build_rule(self) -> str:
         self._raw = self._action + " " + self._header + " "
         self._raw += "({options})".format(options=" ".join([str(opt) for opt in self._options]))
         self.build_options()
         return self._raw
 
-    def add_option(self, name, value=None, index=None):
+    def add_option(self, name: str, value: Optional[str] = None, index: Optional[int] = None):
         option = Option(name=name, value=value)
         if index is None:
             self._options.append(option)
@@ -130,7 +134,7 @@ class Rule:
             self._options.insert(index, option)
         self.build_rule()
 
-    def pop_option(self, name):
+    def pop_option(self, name: str):
         chosen_options = []
         options = []
         for opt in self._options:
@@ -142,10 +146,10 @@ class Rule:
         self.build_rule()
         return chosen_options
 
-    def get_option(self, name):
+    def get_option(self, name: str) -> list[Option]:
         return [option for option in self.options if option.name == name]
 
-    def to_dict(self):
+    def to_dict(self) -> dict:
         options = []
         for option in self.options:
             if option.name != Option.METADATA:
