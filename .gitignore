@@ -1,3 +1,4 @@
 dist
 .idea
 __pycache__
+.coverage
