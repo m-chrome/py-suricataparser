@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from typing import Optional, Union
+from typing import Optional, Union, List
 
 from suricataparser.exceptions import RuleParseException
 from suricataparser.rule import Rule, Option, Metadata
@@ -22,7 +22,7 @@ def parse_metadata(buffer: str) -> Metadata:
     return Metadata(items)
 
 
-def parse_options(buffer: str) -> list[Option]:
+def parse_options(buffer: str) -> List[Option]:
     buffer = buffer.strip()
     if buffer[-1] != ";":
         raise RuleParseException()
@@ -80,7 +80,7 @@ def parse_rule(buffer: str) -> Optional[Rule]:
     return Rule(enabled=enabled, action=action, header=header.strip(), options=options, raw=raw)
 
 
-def parse_file(path: Union[str, Path]) -> list[Rule]:
+def parse_file(path: Union[str, Path]) -> List[Rule]:
     rules = []
     with open(path) as rules_file:
         buffer = ""
@@ -95,7 +95,7 @@ def parse_file(path: Union[str, Path]) -> list[Rule]:
     return rules
 
 
-def parse_rules(rules_object: str) -> list[Rule]:
+def parse_rules(rules_object: str) -> List[Rule]:
     rules = []
     buffer = ""
     for line in rules_object.splitlines():

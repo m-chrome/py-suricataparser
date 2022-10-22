@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any, Optional, List
 
 
 class Option:
@@ -47,7 +47,7 @@ class Metadata:
 
 class Rule:
     def __init__(self, enabled: bool, action: str, header: str,
-                 options: list[Option], raw: Optional[str] = None):
+                 options: List[Option], raw: Optional[str] = None):
         self.enabled = enabled
         self._action = action
         self._header = header
@@ -89,7 +89,7 @@ class Rule:
         return self._msg
 
     @property
-    def options(self) -> list[Option]:
+    def options(self) -> List[Option]:
         return self._options
 
     @property
@@ -146,7 +146,7 @@ class Rule:
         self.build_rule()
         return chosen_options
 
-    def get_option(self, name: str) -> list[Option]:
+    def get_option(self, name: str) -> List[Option]:
         return [option for option in self.options if option.name == name]
 
     def to_dict(self) -> dict:
