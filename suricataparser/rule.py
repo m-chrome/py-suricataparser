@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Optional
 
 
 class Option:
@@ -9,7 +9,7 @@ class Option:
     REV = "rev"
     SID = "sid"
 
-    def __init__(self, name: str, value: Optional[str, 'Metadata'] = None):
+    def __init__(self, name: str, value: Optional[Any] = None):
         self.name: str = name
         self.value: Optional[str, 'Metadata'] = value
 

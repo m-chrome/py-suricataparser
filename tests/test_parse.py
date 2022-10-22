@@ -107,7 +107,7 @@ def test_parse_rules():
         rules_file.write('alert tcp any any -> any any (sid:1;)\n'.encode())
         rules_path = rules_file.name
     with open(rules_path, 'r') as file:
-      rules_object = file.read()
+        rules_object = file.read()
     rules = parse_rules(rules_object)
     assert len(rules) == 1
     rule = rules[0]
