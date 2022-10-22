@@ -4,7 +4,7 @@ version = "0.0.8"
 description = "Package for parsing and generating Snort/Suricata rules."
 authors = ["Mikhail Tsyganov <tsyganov.michail@yandex.ru>"]
 license = "Apache-2.0"
-readme = "README.rst"
+readme = "README.md"
 keywords = ["suricata", "snort", "rules"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
