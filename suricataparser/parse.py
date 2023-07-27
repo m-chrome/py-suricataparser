@@ -50,7 +50,6 @@ def parse_options(buffer: str) -> List[Option]:
 
     return options
 
-
 def parse_rule(buffer: str) -> Optional[Rule]:
     buffer = buffer.strip()
     m = rule_pattern.match(buffer)
@@ -69,7 +68,7 @@ def parse_rule(buffer: str) -> Optional[Rule]:
     header_parts = header.strip().split(" ", maxsplit=1)
     if len(header_parts) != 2:
         return
-
+    
     action, header = header_parts
     if action not in ("alert", "drop", "pass", "reject"):
         return
