@@ -4,8 +4,8 @@ from suricataparser.exceptions import RuleParseException
 from suricataparser.rule import Rule, Option, Metadata
 
 
-rule_pattern = re.compile(r"^(?P<enabled>#)*[\s#]*"
-                          r"(?P<raw>"
+rule_pattern = re.compile(r"(?P<raw>"
+                          r"^(?P<enabled>#)*[\s#]*"
                           r"(?P<header>[^()]+)"
                           r"\((?P<options>.*)\)"
                           r"$)")
